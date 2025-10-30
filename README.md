@@ -177,7 +177,7 @@ It always fetches the **official genesis** from the public Lust Chain RPC, uses 
 Create a file called `lustminer.ps1` and paste:
 
 ```powershell
-# === Lust Chain Windows miner (with 3 official bootnodes) ===
+# === Lust Chain Windows miner (com 3 bootnodes oficiais) ===
 
 $BOOTNODES = @'
 enode://cf04c868ab597ab088cc0868b955368b36c47d22f162a59c8a732d3c4732dda5dac79bd39e41c6f853556aadfb100bacb709fd9f60dec8abfa3185c10ad782f5@138.197.125.190:30303,
@@ -199,8 +199,8 @@ $wallet  = Read-Host "Wallet (0x...)"
 $threads = Read-Host "Threads [2]"
 if (-not $threads) { $threads = 2 }
 
-$ddata = ($DATA -replace '\','/')
-$dgen  = ($GENESIS -replace '\','/')
+$ddata = ($DATA -replace '\\','/')
+$dgen  = ($GENESIS -replace '\\','/')
 
 # 1) init
 docker rm -f $NAME 2>$null | Out-Null
@@ -226,7 +226,7 @@ docker run -d --name $NAME `
   --miner.threads $threads `
   --mine
 
-Write-Host "Miner is running. View logs with: docker logs -f $NAME"
+docker logs -f $NAME
 ```
 
 ### Daily usage (Windows)
