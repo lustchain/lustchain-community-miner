@@ -269,7 +269,7 @@ Write-Host "Miner is running. View logs with: docker logs -f $NAME"
 Use these settings:
 
 - **Network Name:** Lust Chain
-- **New RPC URL:** http://138.197.125.190:18545
+- **New RPC URL:** https://rpc.lustchain.org
 - **Chain ID:** 6923
 - **Currency Symbol:** LST
 - **Block Explorer:** https://explorer.lustchain.org/ (when available)
