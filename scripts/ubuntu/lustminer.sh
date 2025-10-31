@@ -64,7 +64,7 @@ echo "✅ genesis is Lust Chain (chainId 6923)"
 echo "➡ initializing datadir with genesis..."
 sudo docker run --rm   -v "$DATADIR":/root/.ethereum   -v "$GENESIS":/genesis.json:ro   ethereum/client-go:v1.10.26   init /genesis.json
 
-BOOTNODES="enode://cf04c868ab597ab088cc0868b955368b36c47d22f162a59c8a732d3c4732dda5dac79bd39e41c6f853556aadfb100bacb709fd9f60dec8abfa3185c10ad782f5@138.197.125.190:30303,enode://fddbd81de98139327094965d2bfcbe5d9baae312a52b72887a1f1ecba497b521273cefd360bce34c0575bb592d5287d9ed5c5be9698cce9b50c2d8acdc2fd55e@104.248.175.223:30303,enode://707c8b3ef4311b55a7a027ddf499fa96ece47f7f7c226104df4f313a39c997d88a496ff61f33dd7597c8347c0c75a7a8caa5966ac45f7c434122c0331b8224c1@170.64.145.190:30303"
+BOOTNODES="enode://cf04c868ab597ab088cc0868b955368b36c47d22f162a59c8a732d3c4732dda5dac79bd39e41c6f853556aadfb100bacb709fd9f60dec8abfa3185c10ad782f5@138.197.125.190:30303,enode://fddbd81de98139327094965d2bfcbe5d9baae312a52b72887a1f1ecba497b521273cefd360bce34c0575bb592d5287d9ed5c5be9698cce9b50c2d8acdc2fd55e@104.248.175.223:30303,enode://5dd8db368d81e3d31cce9f76df6f28beb5ae5e479a1f9a9f1fe994e6b859499c2d8b0945f06670519d2b95ecf3c9a17938ae0df3e97e007eea6545acd013cf31@170.64.145.190:30303"
 
 echo "➡ starting miner..."
 sudo docker run -d --name lust-miner --restart unless-stopped   -v "$DATADIR":/root/.ethereum   ethereum/client-go:v1.10.26   --networkid 6923   --syncmode full   --http --http.addr 0.0.0.0 --http.port 8545 --http.api eth,net,web3,miner   --bootnodes "$BOOTNODES"   --mine   --miner.etherbase "$WALLET"   --miner.threads "$THREADS"   --cache 512
